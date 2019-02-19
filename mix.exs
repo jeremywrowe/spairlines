@@ -10,7 +10,8 @@ defmodule Spairlines.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      applications: [:dotenv, :httpoison]
     ]
   end
 
@@ -42,7 +43,10 @@ defmodule Spairlines.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:react_phoenix, "~> 1.0.0"},
+      {:dotenv, "~> 3.0.0"},
+      {:httpoison, "~> 1.4"}
     ]
   end
 

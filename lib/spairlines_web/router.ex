@@ -9,18 +9,37 @@ defmodule SpairlinesWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :config do
+    plug SpairlinesWeb.Plugs.Config
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/", SpairlinesWeb do
+  scope "/setup", SpairlinesWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", SetupController, :show
+    post "/", SetupController, :create
+    put "/", SetupController, :update
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", SpairlinesWeb do
-  #   pipe_through :api
-  # end
+  scope "/", SpairlinesWeb do
+    pipe_through :browser
+    pipe_through :config
+
+    get "/", PageController, :index
+    get "/flights/:id", FlightsController, :show
+    get "/purchases", PurchasesController, :index
+  end
+
+  scope "/api", SpairlinesWeb do
+    pipe_through :api
+    pipe_through :config
+
+    post "/purchases", PurchasesController, :create
+    get "/credit-cards", CreditCardsController, :index
+    delete "/credit-cards/:id", CreditCardsController, :delete
+  end
 end

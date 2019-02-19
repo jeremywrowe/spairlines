@@ -5,24 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Spairlines · Book your travel</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" rel="stylesheet">
   </head>
   <body>
-    <main role="main" class="container mx-auto">
-      <% if info_message = get_flash(@conn, :info) do %>
-        <p class="bg-blue-lightest border border-blue-light text-blue-dark px-4 py-3 rounded relative" role="alert">
+    <%= if info_message = get_flash(@conn, :info) do %>
+      <div class="flash bg-grey-lightest py-8 border-b-2 border-blue-light animated delay-2s slideOutUp">
+        <p class="mx-auto w-3/5 bg-blue-lightest border border-blue-light text-blue-dark px-4 py-3 rounded relative" role="alert">
           <%= info_message %>
         </p>
-      <% end %>
+      </div>
+    <% end %>
 
-      <% if error_message = get_flash(@conn, :error) do %>
-        <p class="bg-red-lightest border border-red-light text-red-dark px-4 py-3 rounded relative" role="alert">
+    <%= if error_message = get_flash(@conn, :error) do %>
+      <div class="flash bg-grey-lightest py-8 border-b-2 border-blue-light animated delay-2s slideOutUp">
+        <p class="mx-auto w-3/5 bg-red-lightest border border-red-light text-red-dark px-4 py-3 rounded relative" role="alert">
           <%= error_message %>
         </p>
-      <% end %>
+      </div>
+    <% end %>
 
-      <%= render @view_module, @view_template, assigns %>
-    </main>
+    <%= render @view_module, @view_template, assigns %>
+
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

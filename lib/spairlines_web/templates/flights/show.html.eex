@@ -1,0 +1,9 @@
+<div id="flight" class="h-screen w-screen"></div>
+
+<%=react_component(
+  "SpairlinesComponents.Flight",
+  %{ basePrice: @flight.price, location: @flight.location, description: @flight.description, spreedlyEnvironmentKey: @conn.assigns.spreedly_config.environment_key },
+  %{ target_id: "flight" }
+) %>
+
+<script src="https://core.spreedly.com/iframe/express-2.min.js"></script>

@@ -1,0 +1,54 @@
+<% input_classes = "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline" %>
+<% label_classes = "block text-grey-darker text-sm font-bold mb-2" %>
+
+<div class="container w-screen mx-auto p-8">
+  <%= form_for @changeset, Routes.setup_path(@conn, :create), [class: "w-full max-w-md mx-auto"], fn f -> %>
+    <h1 class="pb-6 text-grey-darkest">Setup Spairlines</h1>
+    <div class="mb-6 rounded p-8 border-2 text-yellow-darker border-2 border-yellow-light bg-yellow-lightest">
+      <p class="mb-4">
+        Welcome to the Spairlines App! There are a couple of things that you'll need to do to get started.
+      </p>
+      <ul>
+        <li>Find (in Spreedly) and set the variables listed below</li>
+        <li>Save the form</li>
+        <li>Collect wheels and wheels of cheddar</li>
+      </ul>
+    </div>
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-6">
+        </label>
+        <%= label f, :name, "Spairlines Owner", [class: label_classes] %>
+        <%= text_input f, :name, [class: input_classes] %>
+      </div>
+      <div class="mb-6">
+        </label>
+        <%= label f, :organization, "Spreedly Organization", [class: label_classes] %>
+        <%= text_input f, :organization, [class: input_classes] %>
+      </div>
+      <div class="mb-6">
+        <%= label f, :environment_key, "Spreedly Environment Key", [class: label_classes] %>
+        <%= text_input f, :environment_key, [class: input_classes] %>
+      </div>
+      <div class="mb-4">
+        <%= label f, :gateway_token, "Spreedly Gateway Token", [class: label_classes] %>
+        <%= text_input f, :gateway_token, [class: input_classes] %>
+      </div>
+      <div class="mb-4">
+        <%= label f, :access_secret, "Spreedly Access Secret", [class: label_classes] %>
+        <%= text_input f, :access_secret, [class: input_classes] %>
+      </div>
+      <%= if @changeset.data.receiver_token do %>
+        <div class="mb-4">
+          <span class="<%= label_classes %>">Spreedly Receiver Token</span>
+          <div class="bg-grey-lighter <%= input_classes %>"><%= @changeset.data.receiver_token %></div>
+        </div>
+      <% end %>
+      <div class="my-8 flex items-center justify-between">
+        <%= submit "Save", [class: "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"] %>
+      </div>
+    <% end %>
+    <p class="text-center text-grey text-xs">
+      ©<%= DateTime.utc_now.year %> Spairlines. All rights reserved.
+    </p>
+  </div>
+</div>

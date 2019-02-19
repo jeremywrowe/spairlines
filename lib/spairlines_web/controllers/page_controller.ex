@@ -1,7 +1,11 @@
 defmodule SpairlinesWeb.PageController do
   use SpairlinesWeb, :controller
+  alias Spairlines.{Airlines,Flights}
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    conn
+    |> assign(:airlines, Airlines.all)
+    |> assign(:flights, Flights.all)
+    |> render("index.html")
   end
 end

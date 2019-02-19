@@ -1,3 +1,27 @@
 /* This file is for your main application css. */
 
-@import "./phoenix.css";
+.flight-container {
+  min-width: 400px;
+}
+
+.plane {
+  width: 296px;
+}
+
+.plane-overflow {
+  height: calc(100% - 795px);
+}
+
+.nose {
+  width: 100px;
+}
+
+.card {
+  height: 190px; 
+  width: 340px;
+}
+
+.pin-card-close {
+  right: -10px;
+  top: -10px;
+}
