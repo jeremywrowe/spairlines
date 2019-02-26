@@ -9,6 +9,10 @@ defmodule SpairlinesWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :setup do
+    plug BasicAuth, use_config: {:spairlines, :setup_auth_config}
+  end
+
   pipeline :config do
     plug SpairlinesWeb.Plugs.Config
   end
@@ -19,6 +23,7 @@ defmodule SpairlinesWeb.Router do
 
   scope "/setup", SpairlinesWeb do
     pipe_through :browser
+    pipe_through :setup
 
     get "/", SetupController, :show
     post "/", SetupController, :create

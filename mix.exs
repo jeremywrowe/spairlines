@@ -46,7 +46,8 @@ defmodule Spairlines.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:react_phoenix, "~> 1.0.0"},
       {:dotenv, "~> 3.0.0"},
-      {:httpoison, "~> 1.4"}
+      {:httpoison, "~> 1.4"},
+      {:basic_auth, "~> 2.2.2"}
     ]
   end
 

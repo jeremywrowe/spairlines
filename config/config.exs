@@ -17,6 +17,12 @@ config :spairlines, SpairlinesWeb.Endpoint,
   render_errors: [view: SpairlinesWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Spairlines.PubSub, adapter: Phoenix.PubSub.PG2]
 
+config :spairlines, setup_auth_config: [
+  username: "spreedly",
+  password: "super sekret",
+  realm: "Spairlines Admin Setup"
+]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
