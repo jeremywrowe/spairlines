@@ -43,6 +43,10 @@
           <div class="bg-grey-lighter <%= input_classes %>"><%= @changeset.data.receiver_token %></div>
         </div>
       <% end %>
+      <div class="mb-4">
+        <span class="<%= label_classes %>">Spreedly Base URL</span>
+        <div class="bg-grey-lighter <%= input_classes %>"><%= Spairlines.Spreedly.base_url %></div>
+      </div>
       <div class="my-8 flex items-center justify-between">
         <%= submit "Save", [class: "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"] %>
       </div>

@@ -74,10 +74,12 @@ defmodule Spairlines.Spreedly do
     end
   end
 
+  def base_url, do: System.get_env("SPREEDLY_ENDPOINT") || "https://core.spreedly.com" 
+
   ## Private API
 
   def process_request_url(url) do
-    "https://core.spreedly.com/v1" <> url <> ".json"
+    base_url() <> "/v1" <> url <> ".json"
   end
 
   def process_request_headers(_) do
